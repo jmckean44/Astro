@@ -1,8 +1,15 @@
 # build output
-dist/
+.vscode/
+.astro/
 
 # generated types
-.astro/
+src/
+tsconfig.json
+package-lock.json
+package.json
+postcss.config.cjs
+astro.config.mjs
+README.md
 
 # dependencies
 node_modules/
