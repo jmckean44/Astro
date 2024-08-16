@@ -1,0 +1,66 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+import ThemeIcon from '../components/ThemeIcon.astro';
+---
+
+<a class="skip-navigation" href="#main-content">Skip to main content</a>
+
+<header id="header" class="header header--white">
+	<div class="header-container">
+		<div id="logo-desktop">
+			<a href="/" aria-label="Logo" role="link"></a>
+		</div>
+
+		<nav id="nav-desktop" role="navigation">
+			<ul class="nav-links">
+				<!-- <li>
+					<a class={currentPath === '' ? 'active' : ''} href="/" role="link" aria-label="link to Homepage">HOME</a>
+				</li>
+				<li>
+					<a class={currentPath === 'work' ? 'active' : ''} role="link" aria-label="link to Community page">COMMUNITY</a>
+				</li>
+				<li>
+					<a class={currentPath === 'contact' ? 'active' : ''} href="/residences" role="link" aria-label="link to residences page">RESIDENCES</a>
+				</li> -->
+				<li class="register">
+					<a class={currentPath === 'contact' ? 'active' : ''} href="#register" role="link" aria-label="link to contact page">REGISTER</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- <ThemeIcon /> -->
+	</div>
+</header>
+
+<!-- <div id="nav-mobile">
+	<div id="toggle" class="toggle">
+		<span>menu</span>
+		<span>close</span>
+		<div class="toggle__wrapper">
+			<div class="toggle-bar first-bar"></div>
+			<div class="toggle-bar second-bar"></div>
+			<div class="toggle-bar third-bar"></div>
+		</div>
+	</div>
+
+	<div id="overlay" class="overlay overlay--state">
+		<div class="overlay__container">
+			<nav id="nav" class="nav">
+				<menu id="menu" class="nav__menu">
+					<li class="nav__item">
+						<a href="/" class="nav__link" role="link" aria-label="link to Homepage">HOME</a>
+					</li>
+					<li class="nav__item">
+						<a href="/community" class="nav__link" role="link" aria-label="link to Community page">COMMUNITY</a>
+					</li>
+					<li class="nav__item">
+						<a href="/residences" class="nav__link" role="link" aria-label="link to residences page">RESIDENCES</a>
+					</li>
+					<li class="nav__item">
+						<a href="/contact" class="nav__link" role="link" aria-label="link to contact page">CONTACT</a>
+					</li>
+				</menu>
+			</nav>
+		</div>
+	</div>
+</div> -->

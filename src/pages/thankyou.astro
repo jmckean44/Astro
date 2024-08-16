@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import logoWh from '../img/logo-lrg.svg';
+
+const title = '';
+---
+
+<Layout {title}>
+	<section id="message" role="img" aria-label="Riverscape townhome community aerial location">
+		<div>
+			<Image src={logoWh} class="riverscape" loading="eager" alt="Riverscape: A Natural Wasaga Enclave" />
+			<h1 style="color:#fff">You have been added to the contact list!</h1>
+			<p style="color:#fff">Stay tuned for updates.</p>
+			<p><em style="font-size:12px;text-align:center;color:#fff">You can unsubscribe by clicking the link at the bottom of any email you receive from us.</em></p>
+		</div>
+	</section>
+</Layout>

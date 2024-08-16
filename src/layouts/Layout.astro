@@ -3,49 +3,102 @@ interface Props {
 	title: string;
 }
 
-const { title } = Astro.props;
+import '../styles/global.scss';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { title, description, keywords, logo } from '../components/Constants.ts';
 ---
 
-<!doctype html>
-<html lang="en">
+<html class="lenis" lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<link rel="canonical" href="https://riverscape.ca" />
+
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="theme-color" content="#002554" />
+		<meta name="msapplication-navbutton-color" content="#002554" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#002554" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-config" content="img/browserconfig.xml" />
+
+		<meta name="view-transtions" content="same-origin" />
+
+		<meta property="og:title" content={title} />
+		<meta property="og:name" content={description} />
+		<meta property="og:url" content={description} />
+		<meta property="og:image" content={logo} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+
+		<link rel="stylesheet" href="https://use.typekit.net/sei4xaf.css" />
+
+		<!-- FAVICONS -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a25f53" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-config" content="/browserconfig.xml" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<!-- JSON-LD  -->
+		<script type="application/ld+json">
+			{
+				"@context": "http://www.schema.org",
+				"@type": "LocalBusiness",
+				"name": "Riverscape",
+				"alternateName": "Riverscape: A Natural Wasaga Enclave",
+				"url": "https://riverscape.ca",
+				"logo": "https://riverscape.ca/images/logo-lrg.png",
+				"image": "https://riverscape.ca/images/logo-lrg.png",
+				"description": "Riverscape is a modern townhome community nestled in a private enclave near the town of Wasaga Beach, Georgian Bay, Ontario.",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "",
+					"addressLocality": "Ontario",
+					"addressRegion": "Wasaga Beach",
+					"postalCode": "",
+					"addressCountry": "Canada"
+				}
+			}
+		</script>
+
+		<script is:inline type="speculationrules">
+			{
+				"prerender": [
+					{
+						"urls": ["index.html", "thankyou.html"]
+					}
+				]
+			}
+		</script>
+
+		<!-- GOOGLE TAG (gtag.js) -->
+		<script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-BYCY12M7YP"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-BYCY12M7YP');
+		</script>
+
 		<title>{title}</title>
 	</head>
+
 	<body>
-		<slot />
+		<Header />
+		<main id="#main-content">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>

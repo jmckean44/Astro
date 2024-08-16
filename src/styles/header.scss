@@ -1,0 +1,160 @@
+@use 'variables.scss' as var;
+
+/* =============================================
+   HEADER
+================================================ */
+header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: var.$header-height-desktop;
+	padding: 0 8%;
+	z-index: 999999999999999;
+	background: rgba(255, 255, 255, 0.95);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(10px);
+}
+
+header .header-container {
+	display: flex;
+	flex-direction: row;
+	align-content: flex-end;
+	align-items: center;
+}
+
+header .header-container #nav-desktop {
+	text-align: right;
+	flex: 1 1 0;
+}
+
+/* =========================
+   LOGO
+============================ */
+#logo-desktop {
+	max-width: 250px;
+	height: var.$header-height-desktop;
+	width: 100%;
+	display: block;
+}
+
+#logo-desktop a {
+	background: url('../img/logo.svg') no-repeat left center;
+	background-size: 200px;
+	height: var.$header-height-desktop;
+	display: block;
+	//border: 1px blue solid;
+}
+
+@media (max-width: var.$tablet) {
+	header {
+		height: var.$header-height-tablet;
+	}
+	#logo-desktop {
+		height: var.$header-height-tablet;
+	}
+
+	#logo-desktop a {
+		height: var.$header-height-tablet;
+	}
+}
+
+@media (max-width: var.$mobile) {
+	header {
+		padding: 0 1.5rem;
+		height: var.$header-height-mobile;
+	}
+	#logo-desktop {
+		height: var.$header-height-mobile;
+	}
+
+	#logo-desktop a {
+		background-size: 150px;
+		height: var.$header-height-mobile;
+	}
+}
+
+@media (max-width: 400px) {
+	#logo-desktop a {
+		background: url('../img/logo.svg') no-repeat left center;
+		background-size: 120px;
+	}
+}
+
+/* =============================================
+   HEADROOM
+================================================ */
+.headroom {
+	will-change: transform;
+	transition: var.$transition-time;
+}
+
+.header--hidden {
+	-webkit-transform: translateY(0%);
+	transform: translateY(0%);
+}
+
+.headroom--pinned {
+	-webkit-transform: translateY(0%);
+	transform: translateY(0%);
+}
+.headroom--unpinned {
+	-webkit-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+
+#header.headroom--not-bottom.headroom--not-top,
+#header.headroom--not-bottom.headroom--not-top.headroom--pinned,
+#header.headroom--not-top.headroom--bottom {
+	height: var.$header-height-desktop;
+	transition: var.$transition-time;
+}
+
+@media (max-width: var.$tablet) {
+	#header.headroom--not-bottom.headroom--not-top,
+	#header.headroom--not-bottom.headroom--not-top.headroom--pinned {
+		height: var.$header-height-tablet;
+	}
+	#header.headroom--not-top.headroom--bottom {
+		height: var.$header-height-tablet;
+	}
+}
+
+@media (max-width: var.$mobile) {
+	#header.headroom--not-bottom.headroom--not-top,
+	#header.headroom--not-bottom.headroom--not-top.headroom--pinned {
+		height: var.$header-height-mobile;
+	}
+	#header.headroom--not-top.headroom--bottom {
+		height: var.$header-height-mobile;
+	}
+}
+
+/* =======================
+   SKIP NAV
+========================== */
+a.skip-navigation {
+	left: -999px;
+	position: absolute;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	z-index: -999;
+}
+a.skip-navigation:focus,
+a.skip-navigation:active {
+	color: #fff;
+	background-color: #000;
+	left: auto;
+	top: auto;
+	width: 30%;
+	height: auto;
+	overflow: auto;
+	margin: 10px 35%;
+	padding: 5px;
+	border-radius: 15px;
+	border: 4px solid yellow;
+	text-align: center;
+	font-size: 1.2em;
+	z-index: 999;
+}

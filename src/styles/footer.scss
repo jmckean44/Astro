@@ -1,0 +1,78 @@
+@use 'variables.scss' as var;
+
+/* =================================
+   FOOTER
+==================================== */
+footer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	align-content: flex-end;
+	justify-content: space-between;
+	background: var.$theme-clr url('../img/footer-pattern.svg') no-repeat center top;
+	background-size: cover;
+	width: 100%;
+	margin: 0 auto;
+	padding: 4rem 8%;
+	text-transform: uppercase;
+	font-size: 0.7rem;
+	line-height: 1.3;
+	color: #fff;
+}
+
+footer a:hover,
+footer a.active {
+	color: #fff;
+}
+
+footer .copyright-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+footer .copyright {
+	padding-right: 2rem;
+	border-right: 1px #fff solid;
+}
+
+footer .social {
+	padding-left: 1.7rem;
+}
+
+footer .social img {
+	width: 17px;
+	margin-right: 0.5rem;
+}
+
+footer p {
+	margin: 0;
+	color: #fff;
+}
+
+footer .copyright a {
+	color: #fff;
+}
+
+footer .upperview {
+	max-width: 140px;
+	margin-right: 3rem;
+}
+
+footer .sterling {
+	max-width: 60px;
+}
+
+@media (max-width: var.$mobile) {
+	footer {
+		padding: 4rem 1.5rem;
+	}
+	footer .copyright-container {
+		margin-bottom: 2rem;
+	}
+	footer .copyright {
+		padding-right: 0;
+		border-right: 0;
+	}
+}

@@ -1,0 +1,47 @@
+---
+const currentYear = new Date().getFullYear();
+import { Image } from 'astro:assets';
+import upperview from '../img/logo-upperview.svg';
+//import sterling from '../img/logo-sterling-group.png';
+import facebook from '../img/icon-facebook.svg';
+import instagram from '../img/icon-instagram.svg';
+---
+
+<footer>
+	<div class="flex padding-x align-middle">
+		<div class="cell medium-shrink small-18">
+			<div class="copyright-container">
+				<div class="copyright">
+					<p><a href="/privacy" role="link" arial-label="link to privacy policy">Privacy Policy</a></p>
+					<p>© {currentYear} RIVERSCAPE.COM</p>
+				</div>
+				<div class="social">
+					<a href="https://www.facebook.com/UpperviewHomes/" target="_blank" role="link" aria-label="link to Upperview Homes on Facebook"><Image src={facebook} alt="Upperview Homes on Facebook" /></a>
+					<a href="https://www.instagram.com/upperviewhomes/" target="_blank" role="link" aria-label="link to Upperview Homes on Instagram"
+						><Image src={instagram} alt="Upperview Homes on Instagram" /></a
+					>
+				</div>
+			</div>
+		</div>
+		<div class="cell auto"></div>
+		<div class="cell medium-shrink small-18">
+			<a href="https://www.upperviewhomes.com/" target="_blank" role="link" aria-label="link to Upperview Homes website"><Image src={upperview} class="upperview" alt="Upperview Homes" /></a>
+		</div>
+	</div>
+</footer>
+
+<script src="../scripts/scripts.js"></script>
+<script src="../scripts/headroom.js"></script>
+<script src="../scripts/lenis.js"></script>
+<script is:inline src="/wow.js"></script>
+
+<script is:inline>
+	var wow = new WOW({
+		boxClass: 'wow',
+		animateClass: 'animated',
+		offset: 0,
+		mobile: true,
+		live: true,
+	});
+	wow.init();
+</script>

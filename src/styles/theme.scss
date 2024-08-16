@@ -1,0 +1,159 @@
+@use 'variables.scss' as var;
+
+/* =============================================
+   PAGE BACKGROUND LIGHT/DARK
+================================================ */
+html {
+	transition: var.$transition-time;
+	scroll-behavior: smooth;
+}
+
+html.dark {
+	background: var.$dark;
+	transition: var.$transition-time;
+}
+
+html.dark #header {
+	background: var.$dark;
+	transition: var.$transition-time;
+}
+
+html.dark #logo-desktop a {
+	background: url('../img/logo-wh.svg') no-repeat left center;
+	background-size: 200px;
+}
+
+html header {
+	background: rgba(255, 255, 255, 0.95);
+	transition: var.$transition-time;
+}
+
+html.dark body {
+	background: var.$dark !important;
+	transition: var.$transition-time;
+}
+
+html body {
+	background: var.$light;
+	transition: var.$transition-time;
+}
+
+html body #escape .logo-clr {
+	display: inline-block;
+}
+
+html body #escape .logo-wh {
+	display: none;
+}
+
+html.dark body #escape .logo-clr {
+	display: none;
+}
+
+html.dark body #escape .logo-wh {
+	display: inline-block;
+}
+
+html.dark #nav-desktop .nav-links > li a {
+	color: var.$theme-clr;
+	background: #fff;
+}
+
+html.dark a {
+	color: #fff;
+}
+
+html.dark a:hover {
+	color: var.$theme-clr;
+}
+
+html.dark .nav-links li a.active,
+html.dark .nav-links li a:hover,
+html.dark .work-thumbs h2 {
+	color: #fff;
+}
+
+html.dark p {
+	color: var.$font-clr-dark;
+}
+
+html.dark .logo-clr {
+	background: #fff;
+}
+
+html.dark #logo svg {
+	fill: var.$theme-clr;
+}
+html.dark .overlay {
+	background: var.$dark, 0.95;
+}
+
+html .nav-links li a.active,
+html .nav-links li a:hover {
+	color: var.$dark;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+	color: #fff;
+}
+
+/* =============================================
+   THEME TOGGLE
+================================================ */
+.controls {
+	position: absolute;
+	right: 0.5rem;
+	// text-align: center;
+	// display: flex;
+	// flex-direction: row;
+	// justify-content: center;
+	// align-items: center;
+	z-index: 999999999999999999;
+}
+
+@media (max-width: 800px) {
+	.controls {
+		display: none;
+	}
+}
+
+#themeToggle {
+	/* border-radius: 50%; */
+	border: none;
+	height: 37px;
+	width: 37px;
+	cursor: pointer;
+	background: none;
+	margin-right: 0.25rem;
+}
+
+.sun {
+	fill: var.$theme-clr;
+}
+.moon {
+	fill: transparent;
+}
+/* :global(.dark) .sun {
+  fill: transparent;
+}
+:global(.dark) .moon {
+  fill: rgb(78, 125, 255);
+} */
+
+:global(.dark) {
+	color-scheme: dark;
+}
+
+@media (max-width: 600px) {
+	.controls {
+		position: absolute;
+		left: auto;
+		right: 1rem;
+		top: 100px;
+	}
+}

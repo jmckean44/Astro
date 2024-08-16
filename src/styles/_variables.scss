@@ -1,0 +1,42 @@
+// BREAKPOINTS
+$desktop: 1400px;
+$tablet: 1024px;
+$mobile: 700px;
+$mobile-sm: 500px;
+
+// THEME
+$theme-clr: #a25f53;
+$highlight: #f3e7dd;
+$nav-clr: #fff;
+$light: 255, 255, 255;
+$dark: #002554;
+$bg-clr: #fff;
+
+// LOGO
+$logo-desktop: 120px;
+$logo-tablet: 100px;
+$logo-mobile: 70px;
+
+// FONTS
+$font-serif: 'Helvetica', Arial, sans-serif;
+$font-sans-serif: 'Times', serif;
+$theme-font: 'barlow-semi-condensed', sans-serif;
+$font-size: calc(1rem + 0.2vw);
+$font-clr: #002554;
+$font-clr-dark: #fff;
+$transition-time: all ease 0.3s;
+
+// HEADER
+$header-height-desktop: 90px;
+$header-height-tablet: 75px;
+$header-height-mobile: 60px;
+$header-bg-clr: rgba(255, 255, 255, 0.9);
+
+// FOOTER
+$footer-bg-clr: #f9f9f9;
+
+/* GAPS */
+$gap-sm: 1.5em;
+$gap-med: 2em;
+$gap-lrg: 2.5em;
+$gap-xlrg: 3em;

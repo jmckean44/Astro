@@ -1,0 +1,896 @@
+@use 'variables' as var;
+@use 'header.scss';
+@use 'footer.scss';
+@use 'flex.scss';
+@use 'navigation.scss';
+@use 'theme.scss';
+@use 'keyframes.scss';
+@use 'form.scss';
+@use 'swiper.scss';
+
+/* =============================================
+	 RESETS
+================================================ */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td,
+th {
+	padding: 0;
+}
+
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+img,
+picture,
+svg,
+canvas,
+video {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+/* =============================================
+	 BASE LEVEL 
+================================================ */
+html {
+	font-size: 100%;
+	box-sizing: border-box;
+	font-family: inherit;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+	//scroll-behavior: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+body {
+	overflow-x: hidden !important;
+	line-height: 1.8;
+	padding: 0;
+	margin: 0;
+	font-family: var.$font-serif;
+	font-weight: normal;
+	font-size: var.$font-size;
+	height: 100%;
+	background: var.$bg-clr;
+	position: relative;
+	animation: fadeInAnimation ease 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+body main {
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -100% !important;
+}
+
+/* =============================================
+	 HEADINGS / ELEMENTS / TAGS
+================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var.$theme-font;
+	margin: 0 0 2rem;
+	line-height: 1;
+	letter-spacing: 1px;
+}
+
+h1 {
+	color: var.$font-clr;
+	font-size: min(max(2rem, 2.5vw), 36px);
+}
+
+h2 {
+	color: var.$font-clr;
+	font-size: min(max(1.7rem, 2vw), 28px);
+}
+
+h3 {
+	color: var.$font-clr;
+	font-size: min(max(1.5rem, 1.75vw), 24px);
+}
+
+h4 {
+	color: var.$font-clr;
+	font-size: min(max(1.25rem, 1.5vw), 20px);
+}
+
+h5 {
+	color: var.$font-clr;
+	font-size: min(max(1rem, 1.25vw), 18px);
+}
+
+h6 {
+	color: green;
+	font-size: min(max(0.9rem, 1vw), 16px);
+}
+
+p {
+	font-size: inherit;
+	line-height: 1.7;
+	margin-bottom: 1.5rem;
+	text-rendering: optimizeSpeed;
+	text-wrap: pretty;
+	color: var.$dark;
+	text-align: justify;
+}
+
+a,
+a:link,
+a:hover,
+a:visited {
+	transition: var.$transition-time;
+	color: var.$font-clr;
+	text-decoration: none;
+	text-underline-offset: 5px;
+}
+
+a:hover {
+	transition: var.$transition-time;
+	color: var.$theme-clr;
+	text-decoration: none;
+	text-underline-offset: 5px;
+}
+
+div,
+p {
+	text-wrap: pretty;
+}
+
+/* =============================================
+	 IMAGES
+================================================ */
+img {
+	width: 100%;
+	max-width: 100%;
+	border: 0;
+	height: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+img[loading='lazy'],
+img[loading='eager'] {
+	transition: all ease 0.5s;
+}
+
+/* =============================================
+	 LISTS
+================================================ */
+ul,
+ol {
+	font-size: inherit;
+	line-height: 1.4;
+	margin: 0 0 0.5rem 1.5rem;
+	list-style-position: outside;
+	font-family: inherit;
+}
+
+ol {
+	margin-left: 1.4rem;
+	list-style-position: inside !important;
+}
+
+header ul,
+footer ul {
+	list-style: none;
+	margin: 0;
+}
+
+/* =============================================
+	 REVEAL BANNERS
+================================================ */
+.reveal-container {
+	position: relative;
+	overflow: hidden !important;
+	width: 100%;
+	max-height: 800px;
+}
+
+.reveal-container img {
+	min-width: 1000px;
+}
+
+.reveal {
+	margin-bottom: -3.5%;
+	opacity: 1;
+	-webkit-transform: translateY(0%);
+	transform: translateY(0%);
+	transition: var.$transition-time;
+}
+
+.reveal.revealer--show {
+	visibility: visible;
+	opacity: 1;
+}
+
+.reveal.revealer--unpinned {
+	visibility: visible;
+	opacity: 1;
+	-webkit-transform: translateY(-5%);
+	transform: translateY(-5%);
+}
+
+@media (max-width: 800px) {
+	.reveal-container img {
+		min-width: 600px;
+	}
+	.reveal {
+		margin-bottom: -5%;
+	}
+}
+
+/* =============================================
+	 LENIS
+================================================ */
+html.lenis,
+html.lenis body {
+	height: auto;
+	scroll-behavior: initial;
+}
+
+html.lenis-stopped,
+html.nav {
+	overflow: hidden;
+}
+body {
+	min-height: 100vh;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+
+/* =================================
+	 CONTAINERS
+==================================== */
+section {
+	position: relative;
+}
+
+.container {
+	padding: 0 1.25rem;
+	max-width: 1400px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.container.top {
+	padding: 125px 1.25rem 0;
+}
+
+.container.btm {
+	padding: 0 1.25rem 125px;
+}
+
+.container.top.btm {
+	padding: 125px 1.25rem;
+}
+
+@media (max-width: var.$mobile) {
+	.container.top {
+		padding: 100px 1.25rem 0;
+	}
+
+	.container.btm {
+		padding: 0 1.25rem 100px;
+	}
+
+	.container.top.btm {
+		padding: 100px 1.25rem;
+	}
+}
+
+/* =====================
+	 MISC
+======================== */
+.register a {
+	display: inline-block;
+	color: #fff;
+	font-family: var.$theme-font;
+	font-weight: 600;
+	background: var.$dark;
+	padding: 0.75rem 1rem;
+	line-height: 1;
+	letter-spacing: 1px;
+	border-radius: 2px;
+}
+
+@media (max-width: 400px) {
+	.register a {
+		padding: 0.7rem;
+		letter-spacing: 0.5px;
+	}
+}
+
+.register-today a {
+	display: inline-block;
+	color: var.$dark;
+	font-family: var.$theme-font;
+	font-weight: 600;
+	padding: 1rem 0;
+	font-weight: bold;
+	line-height: 1;
+	letter-spacing: 1px;
+}
+
+.register-today a:hover {
+	color: var.$theme-clr;
+}
+
+.divider {
+	border-bottom: 4px transparent solid;
+	height: 4px;
+}
+
+.divider-grey {
+	margin: 50px auto;
+	padding: 1.5rem;
+	max-width: 1200px;
+}
+
+.divider-grey div {
+	border-bottom: 1px var.$dark solid;
+}
+
+/* =================================
+	 HOME HERO
+==================================== */
+#hero {
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 95vh;
+	min-height: 800px;
+	background: url('../img/hero-desktop.webp') no-repeat center top;
+	background-size: cover;
+}
+
+#hero > div {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+	text-align: center;
+	padding: 0 1rem;
+	left: 0;
+	right: 0;
+	top: 50%;
+}
+
+#hero h1 {
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 30px;
+	z-index: 999;
+	font-size: min(max(1.25rem, 4.5vw), 50px);
+}
+
+#hero .riverscape {
+	position: absolute;
+	margin: 0 auto;
+	text-align: center;
+	max-width: 400px;
+	left: 0;
+	right: 0;
+}
+
+@media (max-width: 1400px) {
+	#hero {
+		height: 80vh;
+		min-height: 700px;
+	}
+	#hero .riverscape {
+		max-width: 300px;
+	}
+	#hero h1 {
+		letter-spacing: 20px;
+	}
+}
+
+@media (max-width: 1200px) {
+	#hero h1 {
+		letter-spacing: 10px;
+	}
+}
+
+@media (max-width: var.$mobile) {
+	#hero {
+		height: 70vh;
+		min-height: 600px;
+		background: url('../img/hero-desktop-mobile.webp') no-repeat center top;
+	}
+	#hero .riverscape {
+		max-width: 250px;
+	}
+}
+
+@media (max-width: var.$mobile-sm) {
+	#hero {
+		height: 60vh;
+		min-height: 500px;
+	}
+	#hero h1 {
+		letter-spacing: 5px;
+	}
+	#hero .riverscape {
+		max-width: 200px;
+	}
+}
+
+/* =====================
+	 HOME INTRO
+======================== */
+#intro {
+	background: url('../img/river-bg.svg') no-repeat center top;
+	background-size: cover;
+	text-align: center;
+}
+
+#intro p {
+	color: #fff;
+	text-align: center;
+	margin: 0 auto;
+	max-width: 650px;
+	margin-bottom: 3rem;
+}
+
+#intro img {
+	max-width: 250px;
+	margin-bottom: 3rem;
+}
+
+/* =====================
+	 HOME WASAGA
+======================== */
+#wasaga {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	gap: 5px;
+}
+
+#wasaga .triad {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+#wasaga .triad .swiper {
+	width: 33.333333%;
+}
+
+@media (max-width: var.$mobile-sm) {
+	#wasaga .triad {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#wasaga .triad .swiper {
+		width: 100%;
+	}
+}
+
+/* =====================
+	 HOME ESCAPE
+======================== */
+#escape {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+#escape .flex {
+	gap: 4rem;
+}
+
+#escape h2 {
+	font-size: min(max(2rem, 2.5vw), 48px);
+	letter-spacing: 5px;
+}
+
+#escape .logo {
+	text-align: center;
+}
+
+#escape img {
+	max-width: 250px;
+}
+
+/* =====================
+	 HOME TOWNHOMES
+======================== */
+#townhomes {
+	background: var.$dark;
+	overflow: hidden;
+}
+
+#townhomes .pricing {
+	max-width: 1200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	top: 6%;
+	left: 0;
+	right: 0;
+	margin: 0 auto 5rem;
+	padding: 0 1.5rem;
+}
+
+#townhomes .pricing > div {
+	//border: 1px rgb(0, 208, 87) solid;
+	line-height: 1;
+}
+
+#townhomes .pricing > div:first-child {
+	padding-right: 2.5rem;
+	border-right: 2px var.$highlight solid;
+}
+
+#townhomes .pricing h3 {
+	font-size: min(max(2.25rem, 3vw), 60px);
+	color: var.$highlight;
+	margin: 0;
+}
+
+#townhomes .pricing > div:last-child {
+	padding-left: 2.5rem;
+	margin-top: -4%;
+	font-size: min(max(3rem, 4vw), 80px);
+	line-height: 0.95;
+	color: var.$highlight;
+	font-weight: bold;
+}
+
+#townhomes .pricing > div:last-child span {
+	font-size: min(max(1rem, 1.5vw), 24px);
+	display: inline-block;
+}
+
+#townhomes .pricing > div:last-child sup {
+	font-size: min(max(1.5rem, 2vw), 36px);
+}
+
+#townhomes p {
+	max-width: 900px;
+	margin: 0 auto;
+	text-align: center;
+	color: var.$highlight;
+	font-size: min(max(1.5rem, 2.25vw), 36px);
+	line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+	#townhomes .pricing {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto 5rem;
+		padding: 0 1.5rem;
+	}
+	#townhomes .pricing > div:first-child,
+	#townhomes .pricing > div:last-child {
+		padding: 0;
+		border: 0;
+		text-align: center;
+		margin-top: 0;
+	}
+	#townhomes .pricing h3 {
+		border-bottom: 2px var.$highlight solid;
+		padding-bottom: 1rem;
+		margin-bottom: 0.5rem;
+	}
+}
+
+/* =====================
+	 MAP
+======================== */
+#map {
+	height: 600px;
+	border-bottom: #fff solid 4px;
+}
+
+@media (max-width: 640px) {
+	#map {
+		height: 500px;
+		border-bottom: #fff solid 4px;
+	}
+}
+
+/* =====================
+	 FORM
+======================== */
+#register {
+	background: var.$highlight;
+}
+
+#register #form-container {
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#register .upperview {
+	max-width: 300px;
+	margin-bottom: 3rem;
+}
+
+#register #form-container h3 {
+	color: var.$font-clr;
+	font-size: min(max(2.5rem, 3vw), 48px);
+}
+
+#register #form-container #broker {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding-left: 1rem;
+	margin-top: 0;
+	margin-bottom: 0.25rem;
+}
+
+#register #form-container #broker h3 {
+	color: var.$font-clr;
+	font-size: 0.85rem;
+	margin-bottom: 0;
+	padding-right: 1rem;
+}
+
+#register #form-container form #broker h3 {
+	font-size: 0.9rem;
+}
+
+#register #form-container #broker ul li {
+	display: inline-block;
+	color: var.$dark !important;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+#register #form-container #broker ul li:first-child {
+	margin-right: 1rem;
+}
+
+#register h4 {
+	color: var.$font-clr;
+	text-align: center;
+	font-size: min(max(1.5rem, 2.25vw), 28px);
+}
+
+#register p {
+	font-style: normal;
+	text-transform: none;
+}
+
+#register p.reg-intro {
+	color: var.$theme-clr;
+	font-size: min(max(1.1rem, 2vw), 22px);
+	line-height: 1.4;
+	margin: 0 auto 5rem;
+	text-align: center;
+	max-width: 600px;
+}
+
+#register p a {
+	color: var.$theme-clr;
+}
+
+#register p a:hover {
+	color: var.$dark;
+}
+
+#register p.disclaimer {
+	font-size: 0.75rem;
+	color: var.$font-clr;
+	line-height: 1.6;
+	text-transform: none;
+	font-weight: normal;
+	font-style: normal;
+	margin-top: 2rem;
+}
+
+/* =====================
+	 BEACH
+======================== */
+#beach {
+	height: 80vh;
+	overflow: hidden;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	overflow: hidden;
+	max-height: 700px;
+}
+
+#beach h3 {
+	position: absolute;
+	font-size: min(max(4rem, 5vw), 100px);
+	color: var.$highlight;
+	top: 20%;
+	left: 5%;
+}
+
+#beach img {
+	transform-origin: center center;
+	transform: translate(0%, 0%);
+}
+
+@media (max-width: 1400px) {
+	#beach {
+		max-height: 600px;
+	}
+}
+
+@media (max-width: 1000px) {
+	#beach {
+		max-height: 500px;
+	}
+}
+
+@media (max-width: 700px) {
+	#beach {
+		max-height: 400px;
+	}
+}
+
+/* =====================
+	 THANK YOU
+======================== */
+#thankyou .register {
+	display: none;
+}
+
+#thankyou #message {
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	min-height: 800px;
+	background: url('../img/hero-desktop.webp') no-repeat center top;
+	background-size: cover;
+}
+
+#thankyou #message > div {
+	position: absolute;
+	margin: 0 auto;
+	text-align: center;
+	padding: 0 1.5rem;
+	left: 0;
+	right: 0;
+	top: 25%;
+}
+
+#thankyou #message h1 {
+	margin: 0 auto 2rem;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	z-index: 999;
+	font-size: min(max(1.25rem, 4vw), 36px);
+}
+
+#thankyou #message .riverscape {
+	margin: 0 auto 4rem;
+	text-align: center;
+	max-width: 300px;
+}
+
+#thankyou #message p {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#thankyou #message p em {
+	display: block;
+	line-height: 1.4;
+	margin-top: 1rem;
+}
+
+/* =====================
+	 PRIVACY
+======================== */
+#privacy .register {
+	display: none;
+}
+
+#privacy .privacy {
+	margin: 5rem auto;
+	text-align: center;
+	max-width: 900px;
+}
