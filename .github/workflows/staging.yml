@@ -1,4 +1,4 @@
-name: 🚀 Deploy GH to staging
+name: 🚀 Deploy GH to STAGING
 
 on:
   push:
