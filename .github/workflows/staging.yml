@@ -1,7 +1,6 @@
 on:
   push:
-    branches: 
-      -staging
+    branches: -staging
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -17,4 +16,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /public_html/
+          server-dir: /public_html/staging.riverscape.ca
