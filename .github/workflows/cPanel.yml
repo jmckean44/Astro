@@ -94,4 +94,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /public_html/staging.riverscape.ca/
+          server-dir: /staging.riverscape.ca/
