@@ -1,5 +1,6 @@
 on:
-  workflow_dispatch:
+  push:
+    branches: -main
 
 name: 🚀 Deploy GH to STAGING
 
