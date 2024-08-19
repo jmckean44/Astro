@@ -69,7 +69,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
+    name: Deploy to Live
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
@@ -80,4 +80,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /public_html/
+          server-dir: /test/
