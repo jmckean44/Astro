@@ -3,7 +3,7 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -11,11 +11,11 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [20]
 
     steps:
       - name: Checkout Code 🚚
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Dependencies 📦
         run: npm install
@@ -26,10 +26,10 @@ jobs:
       - name: Upload to cPanel 📂
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: riverscape.ca
+          server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /staging.riverscape.ca/
+          server-dir: /staging/
           exclude: |
             **/.git**
             **/.git*/**
