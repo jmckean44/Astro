@@ -1,7 +1,7 @@
-name: 🚀 Deploy GH to LIVE
-
 on:
   workflow_dispatch:
+
+name: 🚀 Deploy GH to LIVE
 
 permissions:
   contents: read
@@ -71,6 +71,7 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
