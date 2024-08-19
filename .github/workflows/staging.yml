@@ -1,4 +1,4 @@
-name: Deploy GH to Staging
+name: Deploy GH to STAGING
 
 on:
   push:
@@ -8,10 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20]
 
     steps:
       - name: Checkout Code 🚚
