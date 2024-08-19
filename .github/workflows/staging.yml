@@ -1,4 +1,4 @@
-name: Deploy to cPanel
+name: Deploy GH to Staging
 
 on:
   push:
@@ -24,14 +24,9 @@ jobs:
         run: npm run build
 
       - name: Upload to cPanel 📂
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /staging/
-          exclude: |
-            **/.git**
-            **/.git*/**
-            **/node_modules/**
-            **/.**
+          server-dir: /staging.riverscape.ca/
