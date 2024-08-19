@@ -1,8 +1,10 @@
+name: Deploy Astro site to Pages
+
 on:
   push:
-    branches: -main
+    branches: ['main']
 
-name: 🚀 Deploy GH to STAGING
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,7 +16,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: '.'
+  #BUILD_PATH: "." # default value when not using subfolders
+  BUILD_PATH: subfolder
 
 jobs:
   build:
@@ -76,7 +79,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: riverscape.ca
+          server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           server-dir: /staging.riverscape.ca/
