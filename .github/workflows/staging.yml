@@ -6,14 +6,14 @@ on:
 
 jobs:
   deploy:
-    name: 🚀 Deploy website every commit
+    name: 🚀 Deploy to Staging
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
       - name: 📂 Sync files
-        uses: ./
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
