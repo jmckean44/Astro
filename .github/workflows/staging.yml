@@ -29,4 +29,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          local-dir: ./staging3/
+          server-dir: /public_html/staging/
