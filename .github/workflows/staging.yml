@@ -6,27 +6,27 @@ on:
       - main
 
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20]
-
     steps:
-      - name: Checkout Code 🚚
+      - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies 📦
-        run: npm install
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
 
-      - name: Build Astro site
-        run: npm run build
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
 
-      - name: Upload to cPanel 📂
+      - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /test/
+          server-dir: /staging.rivderscape.ca/
