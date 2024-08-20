@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # gsap
 .npmrc
+.github/workflows/staging copy.yml
