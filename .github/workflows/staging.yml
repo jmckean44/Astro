@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  deploy:
+  deployment:
     name: Deploy
     runs-on: ubuntu-latest
     environment:
       name: staging
-      url: staging.riverscape.ca
+      url: https://staging.riverscape.ca
 
     steps:
       - name: 🚚 Get latest code
