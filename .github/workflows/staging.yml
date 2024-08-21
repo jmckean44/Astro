@@ -9,7 +9,20 @@ jobs:
   deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ steps.deploy.outputs.url }}
+
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm install
+      - run: npm run build
+      - run: npm run deploy
+
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
@@ -23,10 +36,12 @@ jobs:
           npm install
           npm run build
 
+      - id: deploy
+        run: echo "url=https://staging-${{ github.event.pull_request.number }}.riverscape.ca" >> $GITHUB_OUTPUT
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: staging.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          local-dir: ./dist
