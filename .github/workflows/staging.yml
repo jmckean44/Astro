@@ -7,41 +7,29 @@ on:
 
 jobs:
   deploy:
-    name: 🎉 Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     environment:
       name: staging
-      url: ${{ steps.deploy.outputs.url }}
+      url: staging.riverscape.ca
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      steps:
+        - name: 🚚 Get latest code
+          uses: actions/checkout@v4
 
-      - run: npm install
-      - run: npm run build
-      - run: npm run deploy
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20'
 
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
+        - name: 🔨 Build Project
+          run: |
+            npm install
+            npm run build
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: 🔨 Build Project
-        run: |
-          npm install
-          npm run build
-
-      - id: deploy
-        run: echo "url=https://staging-${{ github.event.pull_request.number }}.riverscape.ca" >> $GITHUB_OUTPUT
-
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: staging.riverscape.ca
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
+        - name: 📂 Sync files
+          uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+          with:
+            server: ftp.riverscape.ca
+            username: ${{ secrets.ftp_username }}
+            password: ${{ secrets.ftp_password }}
