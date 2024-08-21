@@ -1,35 +1,29 @@
-name: Deploy GH to STAGING
+name: GitHub to Staging
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  deployment:
-    name: Deploy
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: staging
-      url: https://staging.riverscape.ca
-
     steps:
-      - name: Get latest code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Build Project
-        run: |
-          npm install
-          npm run build
-
-      - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Checkout your repository using git
+        uses: actions/checkout@v3
+      - name: Install, build, and upload your site output
+        uses: radenpioneer/astro-ftp-deploy@v0.1.0
         with:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
+          directory: public_html/
+          protocol: ftp # The protocol to use on your FTP server. (optional)
+          port: '21' # The port of your FTP server. (optional)
+          path: . # The root location of your Astro project inside the repository. (optional)
+          node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
+          package-manager: npm
