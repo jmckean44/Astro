@@ -13,23 +13,23 @@ jobs:
       name: staging
       url: staging.riverscape.ca
 
-      steps:
-        - name: 🚚 Get latest code
-          uses: actions/checkout@v4
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
 
-        - name: Setup Node
-          uses: actions/setup-node@v4
-          with:
-            node-version: '20'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-        - name: 🔨 Build Project
-          run: |
-            npm install
-            npm run build
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
 
-        - name: 📂 Sync files
-          uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-          with:
-            server: ftp.riverscape.ca
-            username: ${{ secrets.ftp_username }}
-            password: ${{ secrets.ftp_password }}
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.riverscape.ca
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
