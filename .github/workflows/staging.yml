@@ -1,26 +1,34 @@
-name: CI-SFTP
+name: Deploy GH to STAGING
 
 on:
   push:
-    branches: [main]
-
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  deploy-via-sftp:
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Get latest code
+        uses: actions/checkout@v4
 
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          username: riverscape
-          server: riverscape.ca
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          node-version: '20'
 
-          local_path: ./dist/
-          remote_path: /public_html/
+      - name: Install dependencies
+        run: npm install
 
-          # sftp args
-          args: '-o ConnectTimeout=5'
+      - name: Install dependencies
+        run: npm run build
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.riverscape.ca
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          local-dir: ./dist/
