@@ -74,3 +74,4 @@ jobs:
           server: riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
+          server-dir: /astro/
