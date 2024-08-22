@@ -18,26 +18,28 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build dependencies
+        run: npm run build
+      - name: Archive production artifact
+        uses: actions/upload-artifact@main
         with:
-          node-version: '20'
-
-      - name: Build Project
-        run: |
-          npm install
-          npm run build
+          name: dist
+          path: dist
 
   deploy:
+    name: Deploy 🚀
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy to Staging
-    environment:
-      name: staging
-      url: https://staging.riverscape.ca
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Download artifact
+        uses: actions/download-artifact@main
+        with:
+          name: dist
+          path: dist
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -45,4 +47,3 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /public_html/
