@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install packages
         run: npm install
 
       - name: Install dependencies
@@ -31,4 +31,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /public_html/staging/
+          server-dir: /
