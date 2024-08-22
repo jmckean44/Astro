@@ -1,23 +1,16 @@
-name: Deploy GH to STAGING
-
+name: Build and deploy
 on:
   push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
-    name: Build
+    name: Build ⛏
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest code
-        uses: actions/checkout@v4
-
+      - name: Checkout repository
+        uses: actions/checkout@main
       - name: Install dependencies
         run: npm ci
       - name: Build dependencies
@@ -27,7 +20,6 @@ jobs:
         with:
           name: dist
           path: dist
-
   deploy:
     name: Deploy 🚀
     needs: build
@@ -40,7 +32,6 @@ jobs:
         with:
           name: dist
           path: dist
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
