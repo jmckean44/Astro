@@ -1,4 +1,4 @@
-name: Deploy GH to STAGING
+name: STAGING
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy
+    name: Deploy to Staging
     runs-on: ubuntu-latest
 
     steps:
@@ -31,3 +31,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
+          server-dir: /public_html/
