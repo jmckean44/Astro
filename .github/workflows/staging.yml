@@ -1,4 +1,4 @@
-name: Deploy GH to STAGING
+name: STAGING
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy
+    name: Deploy to Staging
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install NPM packages
         run: npm install
 
-      - name: Install dependencies
+      - name: Build project
         run: npm run build
 
       - name: Sync files
@@ -31,4 +31,4 @@ jobs:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: ./dist/
+          server-dir: /public_html/
