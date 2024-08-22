@@ -12,7 +12,7 @@
     execute_commands:
     - "# yarn install"
     - "npm install"
-    - "npm build"
+    - "npm run build"
     shell: "BASH"
   - action: "Transfer to riverscape.ca"
     type: "FTP"
