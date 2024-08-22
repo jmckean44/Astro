@@ -14,3 +14,8 @@
     - "npm install"
     - "npm test"
     shell: "BASH"
+  - action: "Transfer to riverscape.ca"
+    type: "FTP"
+    login: "riverscape"
+    password: "secure!5ppTbycOEvZXQb0Cuh9smg==.rmx+zT2Sp9N3wDfF/VwFJw=="
+    host: "riverscape.ca"
