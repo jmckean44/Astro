@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Sync files
-        uses: riverscape.ca
+        uses: .
         with:
           server: ftp.riverscape.ca
           username: ${{ secrets.ftp_username }}
