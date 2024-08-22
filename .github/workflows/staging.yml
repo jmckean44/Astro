@@ -1,40 +1,27 @@
-name: Build and deploy
+name: CI-SFTP
+
 on:
   push:
     branches: [main]
+
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build ⛏
+  deploy-via-sftp:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
-      - name: Install dependencies
-        run: npm ci
-      - name: Build dependencies
-        run: npm run build
-      - name: Archive production artifact
-        uses: actions/upload-artifact@main
+      - uses: actions/checkout@v4
+
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-          name: dist
-          path: dist
-  deploy:
-    name: Deploy 🚀
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
-      - name: Download artifact
-        uses: actions/download-artifact@main
-        with:
-          name: dist
-          path: dist
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftp.riverscape.ca
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
+          username: riverscape
+          server: riverscape.ca
+          port: 22
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          local_path: ./dist/
+          remote_path: /public_html/
+
+          # sftp args
+          args: '-o ConnectTimeout=5'
