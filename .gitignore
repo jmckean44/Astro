@@ -27,6 +27,6 @@ pnpm-debug.log*
 .npmrc
 .github/workflows/staging copy.yml
 .github/workflows/staging copy 2.yml
-.github/workflows/staging copy 3.yml
-.github/workflows/staging copy 4.yml
+.github/workflows/ftp.yml
+.github/workflows/sftp.yml
 .github/workflows/astro.yml

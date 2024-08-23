@@ -1,33 +1,23 @@
-name: STAGING
-
-on:
-  push:
-    branches:
-      - main
-
-  workflow_dispatch:
-    inputs:
-      sync:
-        description: 'File synchronization'
-        required: true
-        default: 'delta'
+on: [push]
 
 jobs:
-  deploy-master:
-    name: 'main branch'
-    if: ${{ github.ref == 'refs/heads/main' }}
+  mirror_with_sftp:
+    name: deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: FTP Deployer
+        uses: sand4rt/ftp-deployer@v1.4
         with:
-          fetch-depth: 0
-      - name: 'Deploy'
-        uses: milanmk/actions-file-deployer@master
-        with:
-          remote-protocol: 'sftp'
-          remote-host: 'ftp.riverscape.ca'
-          remote-user: 'riverscape'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-path: '/public_html/'
+          sftp: true
+          host: ftp.riverscape.ca
+          port: 22
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remote_folder: /public_html/
+          local_folder: '.'
+          cleanup: false
+          include: '[ "*", "**/*" ]'
+          exclude: '["node_modules/**", "_secret.php", ".github/**", ".git/**", "*.env"]'
+          pasive: true
