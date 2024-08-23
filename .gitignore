@@ -29,3 +29,4 @@ pnpm-debug.log*
 .github/workflows/staging copy 2.yml
 .github/workflows/staging copy 3.yml
 .github/workflows/staging copy 4.yml
+.github/workflows/astro.yml
