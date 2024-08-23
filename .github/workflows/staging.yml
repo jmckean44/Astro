@@ -1,28 +1,83 @@
-name: Deploy via git-ftp
-on: push
+name: STAGING
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+    inputs:
+      sync:
+        description: 'File synchronization'
+        required: true
+        default: 'delta'
+env:
+BUILD_PATH: '.'
+
 jobs:
+  build:
+  name: Build
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Detect package manager
+      id: detect-package-manager
+      run: |
+        if [ -f "${{ github.workspace }}/package.json" ]; then
+          echo "manager=npm" >> $GITHUB_OUTPUT
+          echo "command=ci" >> $GITHUB_OUTPUT
+          echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+          echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
+          exit 0
+        else
+          echo "Unable to determine package manager"
+          exit 1
+        fi
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: ${{ steps.detect-package-manager.outputs.manager }}
+        cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
+    - name: Setup Pages
+      id: pages
+      uses: actions/configure-pages@v5
+    - name: Install dependencies
+      run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      working-directory: ${{ env.BUILD_PATH }}
+    - name: Build with Astro
+      run: |
+        ${{ steps.detect-package-manager.outputs.runner }} astro build \
+          --site "${{ steps.pages.outputs.origin }}" \
+          --base "${{ steps.pages.outputs.base_path }}"
+      working-directory: ${{ env.BUILD_PATH }}
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ${{ env.BUILD_PATH }}/
+
   deploy:
-    name: Deploy
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest code
+      - name: 🚚 Get latest code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: 🔨 Build Project
         run: |
           npm install
           npm run build
 
-      - name: git-ftp push
-        uses: sebastianpopp/git-ftp-action@releases/v3
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          url: 'ftp://riverscape.ca/public_html/'
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: riverscape.ca
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          server-dir: /public_html/
