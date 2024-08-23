@@ -5,9 +5,21 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Get latest code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm run build
+
       - name: git-ftp push
         uses: sebastianpopp/git-ftp-action@releases/v3
         with:
