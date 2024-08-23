@@ -1,33 +1,16 @@
-name: STAGING
-
-on:
-  push:
-    branches:
-      - main
-
-  workflow_dispatch:
-    inputs:
-      sync:
-        description: 'File synchronization'
-        required: true
-        default: 'delta'
-
+name: Deploy via git-ftp
+on: push
 jobs:
-  deploy-master:
-    name: 'main branch'
-    if: ${{ github.ref == 'refs/heads/master' }}
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: 'Deploy'
-        uses: milanmk/actions-file-deployer@master
+      - name: git-ftp push
+        uses: sebastianpopp/git-ftp-action@releases/v3
         with:
-          remote-protocol: 'sftp'
-          remote-host: 'https://riverscape.ca'
-          remote-user: 'riverscape'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-path: '/public_html/'
+          url: 'ftp://riverscape.ca/public_html/'
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
