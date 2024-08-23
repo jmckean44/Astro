@@ -6,13 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: FTP Deployer
         uses: sand4rt/ftp-deployer@v1.4
         with:
           sftp: true
-          host: ftp.riverscape.ca
-          port: 22
+          host: riverscape.ca
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           remote_folder: /public_html/
