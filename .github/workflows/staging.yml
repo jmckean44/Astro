@@ -1,4 +1,9 @@
-on: [push]
+name: STAGING
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   mirror_with_sftp:
@@ -11,7 +16,7 @@ jobs:
         uses: sand4rt/ftp-deployer@v1.4
         with:
           sftp: true
-          host: riverscape.ca
+          host: https://riverscape.ca
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           remote_folder: /public_html/
