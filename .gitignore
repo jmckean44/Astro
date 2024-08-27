@@ -25,8 +25,4 @@ pnpm-debug.log*
 
 # gsap
 .npmrc
-.github/workflows/staging copy.yml
-.github/workflows/staging copy 2.yml
-.github/workflows/ftp.yml
-.github/workflows/sftp.yml
-.github/workflows/astro.yml
+.github/workflows/deploy.yml
