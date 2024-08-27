@@ -1,4 +1,4 @@
-name: Deploy GH to STAGING
+name: GH to STAGING
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.riverscape.ca
+          server: riverscape.ca
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           server-dir: /public_html/
