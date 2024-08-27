@@ -7,8 +7,8 @@ import icon from 'astro-icon';
 export default defineConfig({
 	site: 'https://riverscape.ca',
 	output: 'static',
-	root: './staging.riverscape.ca/',
-	outDir: './',
+	root: './public_html/',
+	outDir: './test5/',
 	prefetch: true,
 	integrations: [sitemap(), icon()],
 	adapter: node({
