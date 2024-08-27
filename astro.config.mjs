@@ -5,7 +5,7 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://riverscape.ca',
+	site: 'https://staging.riverscape.ca',
 	output: 'static',
 	//outDir: './public_html',
 	outDir: './staging.riverscape.ca',
