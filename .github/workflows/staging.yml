@@ -1,4 +1,4 @@
-name: GH to STAGING
+name: STAGING
 
 on:
   push:
