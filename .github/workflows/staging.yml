@@ -28,6 +28,6 @@ jobs:
         with:
           remote-protocol: 'sftp'
           remote-host: 'ftp.riverscape.ca'
-          remote-user: 'username'
+          remote-user: 'riverscape'
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote-path: '/public_html/'
