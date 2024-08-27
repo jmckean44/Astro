@@ -8,6 +8,7 @@ export default defineConfig({
 	site: 'https://riverscape.ca',
 	output: 'static',
 	root: './staging.riverscape.ca/',
+	outDir: './',
 	prefetch: true,
 	integrations: [sitemap(), icon()],
 	adapter: node({
