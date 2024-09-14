@@ -1,8 +1,7 @@
 ---
 const currentYear = new Date().getFullYear();
 import { Image } from 'astro:assets';
-import upperview from '../img/logo-upperview.svg';
-//import sterling from '../img/logo-sterling-group.png';
+import logo from '../img/logo.svg';
 import facebook from '../img/icon-facebook.svg';
 import instagram from '../img/icon-instagram.svg';
 ---
@@ -13,19 +12,17 @@ import instagram from '../img/icon-instagram.svg';
 			<div class="copyright-container">
 				<div class="copyright">
 					<p><a href="/privacy" role="link" arial-label="link to privacy policy">Privacy Policy</a></p>
-					<p>© {currentYear} RIVERSCAPE.COM</p>
+					<p>© {currentYear} company</p>
 				</div>
 				<div class="social">
-					<a href="https://www.facebook.com/UpperviewHomes/" target="_blank" role="link" aria-label="link to Upperview Homes on Facebook"><Image src={facebook} alt="Upperview Homes on Facebook" /></a>
-					<a href="https://www.instagram.com/upperviewhomes/" target="_blank" role="link" aria-label="link to Upperview Homes on Instagram"
-						><Image src={instagram} alt="Upperview Homes on Instagram" /></a
-					>
+					<a href="https://www.facebook.com/" target="_blank" role="link" aria-label="link to XX on Facebook"><Image src={facebook} alt="XX on Facebook" /></a>
+					<a href="https://www.instagram.com/" target="_blank" role="link" aria-label="link to XX on Instagram"><Image src={instagram} alt="XX on Instagram" /></a>
 				</div>
 			</div>
 		</div>
 		<div class="cell auto"></div>
 		<div class="cell medium-shrink small-18">
-			<a href="https://www.upperviewhomes.com/" target="_blank" role="link" aria-label="link to Upperview Homes website"><Image src={upperview} class="upperview" alt="Upperview Homes" /></a>
+			<a href="https://" target="_blank" role="link" aria-label="link to XX website"><Image src={logo} class="logo-footer" alt="" /></a>
 		</div>
 	</div>
 </footer>
@@ -33,7 +30,7 @@ import instagram from '../img/icon-instagram.svg';
 <script src="../scripts/scripts.js"></script>
 <script src="../scripts/headroom.js"></script>
 <script src="../scripts/lenis.js"></script>
-<script is:inline src="./wow.js"></script>
+<!-- <script src="../scripts/wow.js"></script>
 
 <script is:inline>
 	var wow = new WOW({
@@ -44,4 +41,4 @@ import instagram from '../img/icon-instagram.svg';
 		live: true,
 	});
 	wow.init();
-</script>
+</script> -->

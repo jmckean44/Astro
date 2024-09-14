@@ -278,7 +278,9 @@ textarea {
 	border: $input-border !important;
 	letter-spacing: $input-font-spacing;
 	line-height: $input-line-height;
-	transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+	transition:
+		box-shadow 0.5s,
+		border-color 0.25s ease-in-out;
 	appearance: none;
 }
 input[type='text']:focus,
@@ -297,7 +299,9 @@ textarea:focus {
 	color: var.$theme-clr;
 	-webkit-text-fill-color: var.$theme-clr;
 	box-shadow: $input-focus-boxshadow;
-	transition: box-shadow 0.2s, border-color 0.2s ease-in-out;
+	transition:
+		box-shadow 0.2s,
+		border-color 0.2s ease-in-out;
 }
 
 input[type='submit'],
@@ -343,13 +347,15 @@ select:focus {
 	border: $input-border;
 	background-color: $input-background-focus;
 	box-shadow: $input-focus-boxshadow;
-	transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+	transition:
+		box-shadow 0.5s,
+		border-color 0.25s ease-in-out;
 }
 
 /* =============================
    CHECKBOXES
 ================================ */
-/* input[type='checkbox'] {
+input[type='checkbox'] {
 	margin: 0;
 	width: 1rem;
 	height: 1rem;
@@ -387,13 +393,13 @@ input[type='checkbox']:focus {
 	height: 1px;
 	opacity: 0;
 	z-index: -1;
-} 
+}
 
 .checkbox-design {
 	width: 16px;
 	height: 16px;
 	background: var.$theme-clr;
-	background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%)); 
+	background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
 	position: relative;
 }
 
@@ -415,6 +421,7 @@ input[type='checkbox']:focus {
 /* =============================
    RADIO BUTTONS
 ================================ */
+
 /* =============================
 	 INPUT RADIO
 ================================ */

@@ -1,17 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Picture } from 'astro:assets';
+import RegisterForm from '../components/Form-Radix.jsx';
+
 // import { Image } from 'astro:assets';
 // import logo from '../img/logo.svg';
 
-const pageTitle = 'Hello world';
+const title = 'zzzzz';
 ---
 
-<Layout {pageTitle}>
+<Layout {title}>
 	<section id="hero" aria-label="">
 		<div>
-			<!-- <Picture src={banner} formats={['avif', 'webp']} quality="" alt="" /> -->
 			<!-- <Image src={logo} class="riverscape wow slideInUp" data-wow-delay=".5s" data-wow-duration="3s" loading="eager" alt="" /> -->
+		</div>
+	</section>
+
+	<section id="register">
+		<div class="container top btm">
+			<div id="form-container">
+				<RegisterForm client:visible />
+			</div>
 		</div>
 	</section>
 </Layout>

@@ -6,14 +6,14 @@ interface Props {
 import '../styles/global.scss';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { title, description, keywords, logo } from '../components/Constants.ts';
+import { title, description, keywords, logo } from '../components/Constants';
 ---
 
 <html class="lenis" lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<link rel="canonical" href="https://riverscape.ca" />
+		<link rel="canonical" href="https://!!!!" />
 
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
@@ -34,7 +34,8 @@ import { title, description, keywords, logo } from '../components/Constants.ts';
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 
-		<link rel="stylesheet" href="https://use.typekit.net/sei4xaf.css" />
+		<!-- ADOBE FONTS -->
+		<!-- <link rel="stylesheet" href="https://use.typekit.net/sei4xaf.css" /> -->
 
 		<!-- FAVICONS -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -52,17 +53,17 @@ import { title, description, keywords, logo } from '../components/Constants.ts';
 			{
 				"@context": "http://www.schema.org",
 				"@type": "LocalBusiness",
-				"name": "Riverscape",
-				"alternateName": "Riverscape: A Natural Wasaga Enclave",
-				"url": "https://riverscape.ca",
-				"logo": "https://riverscape.ca/images/logo-lrg.png",
-				"image": "https://riverscape.ca/images/logo-lrg.png",
-				"description": "Riverscape is a modern townhome community nestled in a private enclave near the town of Wasaga Beach, Georgian Bay, Ontario.",
+				"name": "",
+				"alternateName": "",
+				"url": "",
+				"logo": "",
+				"image": "",
+				"description": "",
 				"address": {
 					"@type": "PostalAddress",
 					"streetAddress": "",
 					"addressLocality": "Ontario",
-					"addressRegion": "Wasaga Beach",
+					"addressRegion": "",
 					"postalCode": "",
 					"addressCountry": "Canada"
 				}
@@ -73,23 +74,13 @@ import { title, description, keywords, logo } from '../components/Constants.ts';
 			{
 				"prerender": [
 					{
-						"urls": ["index.html", "thankyou.html"]
+						"urls": ["index.html", "contact.html", "thankyou.html"]
 					}
 				]
 			}
 		</script>
 
 		<!-- GOOGLE TAG (gtag.js) -->
-		<script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-BYCY12M7YP"></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-
-			gtag('config', 'G-BYCY12M7YP');
-		</script>
 
 		<title>{title}</title>
 	</head>

@@ -3,13 +3,15 @@ import sitemap from '@astrojs/sitemap';
 import node from '@astrojs/node';
 import icon from 'astro-icon';
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://riverscape.ca',
-	output: 'static',
-	outDir: './staging.riverscape.ca',
+	site: 'https://pbmarketing.ca/',
+	output: 'server', // hybrid, server, static = pre-rendered pages
+	outDir: 'https://pbmarketing.ca/astro',
 	prefetch: true,
-	integrations: [sitemap(), icon()],
+	integrations: [sitemap(), icon(), react()],
 	adapter: node({
 		mode: 'standalone',
 	}),

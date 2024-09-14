@@ -1,0 +1,51 @@
+@use 'variables.scss' as var;
+
+#logo-desktop {
+	max-width: 250px;
+	height: var.$header-height-desktop;
+	width: 100%;
+	display: block;
+}
+
+#logo-desktop a {
+	background: url('../img/logo.svg') no-repeat left center;
+	background-size: 50px;
+	height: var.$header-height-desktop;
+	display: block;
+	border: 1px blue solid;
+}
+
+@media (max-width: var.$tablet) {
+	header {
+		height: var.$header-height-tablet;
+	}
+	#logo-desktop {
+		height: var.$header-height-tablet;
+	}
+
+	#logo-desktop a {
+		height: var.$header-height-mobile;
+	}
+}
+
+@media (max-width: var.$mobile) {
+	header {
+		padding: 0 1.5rem;
+		height: var.$header-height-mobile;
+	}
+	#logo-desktop {
+		height: var.$header-height-mobile;
+	}
+
+	#logo-desktop a {
+		background-size: 150px;
+		height: var.$header-height-mobile;
+	}
+}
+
+@media (max-width: 400px) {
+	#logo-desktop a {
+		background: url('../img/logo.svg') no-repeat left center;
+		background-size: 120px;
+	}
+}
