@@ -4,33 +4,6 @@ import { useForm } from "react-hook-form";
 import "../styles/form.scss";
 import mailchimp from "mailchimp/mailchimp_marketing";
 
-// import bodyParser from "body-parser";
-// import fetch from "node-fetch";
-// import mailchimp from "@mailchimp/mailchimp_marketing";
-// import express from "express";
-// var app = express();
-// app.use(express.static("views"));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-//const client = require("@mailchimp/mailchimp_marketing");
-
-// client.setConfig({
-// 	apiKey: "f4f4469fb056973a0ef573b5a38020fc-us9",
-// 	server: "us9",
-// });
-
-// const run = async () => {
-// 	const response = await client.lists.addListMember("list_id", {
-// 		email_address: "Ebony_Brekke@gmail.com",
-// 		status: "pending",
-// 	});
-// 	console.log(response);
-// };
-
-// run();
-
-
 function RegisterForm() {
 	const {
 		register,
