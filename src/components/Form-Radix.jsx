@@ -1,80 +1,10 @@
-import "dotenv/config";
-// import { string } from "astro/zod";
+//require("dotenv").config();
+//import { string } from "astro/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-//import CheckboxGroup from "../components/Checkbox.jsx";
-//import Radio from "../components/Radio.jsx";
-//import Select from "../components/Select.jsx";
-import "../styles/form.scss";
-
-//const request = require("request");
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const client = require("@mailchimp/mailchimp_marketing");
-// const port = process.env.PORT || 4322;
-// const app = express();
-
-// app.use(express.static("public"));
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// client.setConfig({
-// 	apiKey: "f4f4469fb056973a0ef573b5a38020fc-us9",
-// 	server: "us9",
-// });
-
-// app.listen(process.env.PORT, () => {
-// 	console.log("Newsletter started successfully");
-// });
-
-// app.get("/", (req, res) => {
-// 	res.sendFile(`${__dirname}/signup.html`);
-// });
-
-// app.post("/failure", (req, res) => {
-// 	res.redirect("/");
-// });
-
-// app.post("/", (req, res) => {
-// 	const firstName = req.body.firstName;
-// 	const lastName = req.body.lastName;
-// 	const email = req.body.email;
-// 	const phone = req.body.phone;
-// 	const hear = req.body.hear;
-// 	const radioGroup = req.body.radioGroup;
-// 	const checkboxGroup = req.body.checkboxGroup;
-// 	const comments = req.body.comments;
-
-// 	const data = {
-// 		email_address: email,
-// 		status: "subscribed",
-// 		merge_fields: {
-// 			FNAME: firstName,
-// 			LNAME: lastName,
-// 			PHONE: phone,
-// 			HEAR: hear,
-// 			RADIO: radioGroup,
-// 			CHECKBOX: checkboxGroup,
-// 			COMMENTS: comments,
-// 		},
-// 	};
-
-// 	const jsonData = JSON.stringify(data);
-
-// 	const run = async () => {
-// 		try {
-// 			const response = await client.lists.batchListMembers("ebf6c1fb09", {
-// 				members: [data],
-// 			});
-
-// 			res.sendFile(`${__dirname}/success.html`);
-// 		} catch (err) {
-// 			console.log(err.status);
-// 			res.sendFile(`${__dirname}/failure.html`);
-// 		}
-// 	};
-
-// 	run();
-// });
+import CheckboxGroup from "../components/Checkbox.jsx";
+import Radio from "../components/Radio.jsx";
+import Select from "../components/Select.jsx";
 
 function RegisterForm() {
 	const {
@@ -90,19 +20,7 @@ function RegisterForm() {
 
 	const onSubmit = async (data) => {
 		try {
-			// const client = require("@mailchimp/mailchimp_marketing");
-			// client.setConfig({
-			// 	apiKey: "f4f4469fb056973a0ef573b5a38020fc-us9",
-			// 	server: "us9",
-			// });
-			// const run = async () => {
-			// 	const response = await client.lists.addListMember("f92b8abf94", {
-			// 		email_address: "Ebony_Brekke@gmail.com",
-			// 		status: "pending",
-			// 	});
-			// 	console.log(response);
-			// };
-			// run();
+		
 
 			await new Promise((resolve) => setTimeout(resolve, 1000));
 			console.log(JSON.stringify(data));
@@ -118,10 +36,7 @@ function RegisterForm() {
 				.then((res) => res.json())
 				.then((data) => console.log(data));
 
-			// const response = await client.lists.batchListMembers("ebf6c1fb09", {
-			// 	members: [data],
-			// });
-			// res.sendFile(`${__dirname}/success.html`);
+			
 
 			//throw new Error();
 		} catch (error) {
@@ -196,7 +111,7 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				{/* {<Select name="hear" />} */}
+				{/* <Select name="hear" /> */}
 				<select {...register("HEAR", { required: false })} className="select">
 					<option value="">How did you hear about us?</option>
 					<option value="A">Option A</option>
@@ -205,13 +120,13 @@ function RegisterForm() {
 			</div>
 
 			<div className="grid-columns-span">
-				{/* {<Radio />} */}
+				{/* <Radio /> */}
 				<input {...register("RADIO", { required: false })} type="radio" value="Yes" />
 				<input {...register("RADIO", { required: false })} type="radio" value="No" />
 			</div>
 
 			<div className="grid-columns-span">
-				{/* {<CheckboxGroup name="CheckboxGroup" />} */}
+				{/* <CheckboxGroup name="CheckboxGroup" /> */}
 				<input {...register("CHECKBOX", { required: false })} type="checkbox" value="Yes" />
 				<input {...register("CHECKBOX", { required: false })} type="checkbox" value="No" />
 			</div>
