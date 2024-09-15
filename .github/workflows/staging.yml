@@ -18,14 +18,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Build Project
-        run: |
-          npm install
-          npm run build
+      - name: Install NPM Packages
+        run: npm install
+
+      - name: Install NPM Packages
+        run: npm run build
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.riverscape.ca
+          server: ftp.marinaresortcavtat.com
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}

@@ -7,9 +7,9 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://pbmarketing.ca/',
+	site: 'https://marinaresortcavtat.com/',
 	output: 'server', // hybrid, server, static = pre-rendered pages
-	outDir: 'https://pbmarketing.ca/astro',
+	outDir: 'staging.marinaresortcavtat.com',
 	prefetch: true,
 	integrations: [sitemap(), icon(), react()],
 	adapter: node({
